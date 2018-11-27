@@ -1,7 +1,10 @@
 const express = require('express');
 const server = express();
 const Sensor = require('./Sensor');
+
+
 var value = 0;
+
 
 //from nodemcu
 server.get('/', (req, res) => {
@@ -124,6 +127,18 @@ server.get('/count', (req, res) => {
       res.status(200).json(error);
     });
 });
+
+server.get('/deleteall', (req, res) => {
+  Sensor.deleteMany({})
+  .then((response)=>{
+    res.status(200).send(response);
+  })
+  .catch((error)=>{
+    res.status(400).send(error);
+  })
+});
+
+
 
 server.listen(5000, () => {
   console.log('server started on port 5000');

@@ -35,7 +35,7 @@
   background-color: rgb(159,187,247);
 }
 
-.sensorvalue {
+#sensorvalue {
   background-color: rgb(241,241,169);
 }
 .humidvalue {
@@ -46,6 +46,9 @@
 }
 .sensorgraph {
   background-color: rgb(183,248,177);
+}
+.h2{
+  color: rgb(244,55,66)
 }
 .jumbotron {
   height: 150px;
