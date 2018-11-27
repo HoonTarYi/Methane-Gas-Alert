@@ -15,11 +15,11 @@ mongoose
 
  const sensorSchema = new mongoose.Schema({
 
-   name: {
-   type : String
+     name: {
+     type : String
  },
- value: {
-   type : Number
+      value: {
+      type : Number
  },
      humid: {
      type : String
