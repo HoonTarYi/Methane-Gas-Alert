@@ -1,13 +1,26 @@
 const express = require('express');
-const server = express();
+const app = express();
 const Sensor = require('./Sensor');
+const cors = require('cors');
 
 
 var value = 0;
 
+const port = process.env.PORT || 2000;
+
+
+app.use(cors());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 
 //from nodemcu
-server.get('/', (req, res) => {
+app.get('/', (req, res) => {
   value = req.query.sensor1;
   value2 = req.query.humid;
   value3 =req.query.temperature;
@@ -34,23 +47,23 @@ server.get('/', (req, res) => {
 });
 
 //from react - get the current value
-server.get('/getsensor1', (req, res) => {
+app.get('/getsensor1', (req, res) => {
   // res.status(200).send(JSON.stringify(value));
   res.status(200).json(value);
 });
 
-server.get('/gethumid', (req, res) => {
+app.get('/gethumid', (req, res) => {
   // res.status(200).send(JSON.stringify(value));
   res.status(200).json(value2);
 });
 
-server.get('/gettemperature', (req, res) => {
+app.get('/gettemperature', (req, res) => {
   // res.status(200).send(JSON.stringify(value));
   res.status(200).json(value3);
 });
 
 //from react - get historical
-server.get('/getallsensor1', (req, res) => {
+app.get('/getallsensor1', (req, res) => {
   Sensor.find()
     .then(response => {
       console.log(response);
@@ -116,8 +129,7 @@ prune3 = () => {
       res.status(200).json(error);
     });
 };
-
-server.get('/count', (req, res) => {
+app.get('/count', (req, res) => {
   Sensor.count({ name: 'sensor1' })
     .then(response => {
       if (response === 9) console.log('Count is: ', response);
@@ -128,7 +140,7 @@ server.get('/count', (req, res) => {
     });
 });
 
-server.get('/deleteall', (req, res) => {
+app.get('/deleteall', (req, res) => {
   Sensor.deleteMany({})
   .then((response)=>{
     res.status(200).send(response);
@@ -140,6 +152,6 @@ server.get('/deleteall', (req, res) => {
 
 
 
-server.listen(5000, () => {
-  console.log('server started on port 5000');
+app.listen(port, () => {
+ console.log(`server started on port ${port}`);
 });

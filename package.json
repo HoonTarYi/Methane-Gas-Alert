@@ -1,7 +1,6 @@
 {
   "name": "nodemcuminimal",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,5 +26,15 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7",
     "twilio": "^3.24.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoonTarYi/Methane-Gas-Alert.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HoonTarYi/Methane-Gas-Alert/issues"
+  },
+  "homepage": "https://github.com/HoonTarYi/Methane-Gas-Alert#readme",
+  "description": ""
 }
