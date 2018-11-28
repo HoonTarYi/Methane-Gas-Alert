@@ -17,10 +17,10 @@ mongoose
 
      name: {
      type : String
- },
+      },
       value: {
       type : Number
- },
+     },
      humid: {
      type : String
     },
