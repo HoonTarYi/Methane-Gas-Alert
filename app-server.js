@@ -1,6 +1,7 @@
 const express = require('express');
 const server = express();
 const Sensor = require('./Sensor');
+const cors = require('cors');
 var value = 0;
 
 const port = process.env.PORT || 2000;
